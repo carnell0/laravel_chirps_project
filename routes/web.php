@@ -23,3 +23,9 @@ Route::resource('chirps', ChirpController::class)
     ->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
+
+Route::post('/chirps', [ChirpController::class, 'store'])->middleware('auth');
+Route::post('/chirps/{chirp}/like', [ChirpController::class, 'like']);
+Route::post('/chirps', [ChirpController::class, 'store'])->name('chirps.store');
+
+Route::post('/chirps', [ChirpController::class, 'store'])->name('chirps.store');
